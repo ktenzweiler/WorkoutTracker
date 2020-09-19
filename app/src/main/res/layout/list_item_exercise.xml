@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@color/colorAccent">
+
+    <EditText
+        android:id="@+id/exercise_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="Exercise"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/exercise_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/exercise_name"
+        app:layout_constraintTop_toTopOf="@+id/exercise_name">
+
+        <TextView
+            android:id="@+id/sets_label"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Sets" />
+
+        <ImageButton
+            android:id="@+id/subtract_sets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/round_remove_circle_outline_white_18" />
+
+        <TextView
+            android:id="@+id/sets_count"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0" />
+
+        <ImageButton
+            android:id="@+id/add_sets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/round_add_circle_outline_white_18" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/exercise_name"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_name"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/reps_label"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Reps" />
+
+        <ImageButton
+            android:id="@+id/subtract_reps"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/round_remove_circle_outline_white_18" />
+
+        <TextView
+            android:id="@+id/reps_count"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0" />
+
+        <ImageButton
+            android:id="@+id/add_reps"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/round_add_circle_outline_white_18" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="43dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_name"
+        app:srcCompat="@drawable/round_delete_white_24" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="178dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Lbs" />
+
+        <ImageButton
+            android:id="@+id/minus_weight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/round_remove_circle_outline_white_18" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0" />
+
+        <ImageButton
+            android:id="@+id/add_weight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/round_add_circle_outline_white_18" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/save_btn"
+        android:layout_width="45dp"
+        android:layout_height="44dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/delete"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_name"
+        app:layout_constraintVertical_bias="0.418"
+        app:srcCompat="@drawable/round_save_white_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
