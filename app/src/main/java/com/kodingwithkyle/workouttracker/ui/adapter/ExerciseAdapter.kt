@@ -14,11 +14,6 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
 
     private val mExercises = ArrayList<Exercise>()
 
-    private val mClickListener = View.OnClickListener() {
-
-
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_item_exercise, parent, false)
@@ -31,6 +26,7 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
             mExercises[holder.adapterPosition].name =
                 view.findViewById<EditText>(R.id.exercise_name).text.toString()
             view.clearFocus()
+            mExercises.add(Exercise("",10,3,30.0))
             notifyItemChanged(holder.adapterPosition)
         }
         view.findViewById<ImageButton>(R.id.subtract_sets).setOnClickListener {

@@ -10,15 +10,26 @@ import com.kodingwithkyle.workouttracker.data.model.workout.WorkoutRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddWorkoutViewModel internal constructor(private val workoutRepo: WorkoutRepo) : ViewModel() {
 
-    fun saveWorkout(exercises: ArrayList<Exercise>) {
-        val df = DateFormat()
+    fun saveWorkout(muscleGroup: String, exercises: ArrayList<Exercise>) {
         val date = DateFormat.format("MM-dd-yyyy", Date())
-        val gson = Gson()
+        val tempList = ArrayList<Exercise>()
+        for (e in exercises) {
+            if (e.name.isNotEmpty()) {
+                tempList.add(e)
+            }
+        }
         viewModelScope.launch(Dispatchers.IO) {
-            workoutRepo.insertWorkout(Workout(date.toString(), "Arms", gson.toJson(exercises)))
+            workoutRepo.insertWorkout(
+                Workout(
+                    date.toString(),
+                    muscleGroup,
+                    Gson().toJson(tempList)
+                )
+            )
         }
     }
 }

@@ -19,6 +19,7 @@ class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
+        const val TAG = "MAIN_FRAGMENT"
     }
 
     private val homeViewModel: MainViewModel by viewModels {
