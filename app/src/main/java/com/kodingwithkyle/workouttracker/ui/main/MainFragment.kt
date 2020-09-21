@@ -14,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.kodingwithkyle.workouttracker.data.model.workout.Workout
 import com.kodingwithkyle.workouttracker.ui.adapter.WorkoutAdapter
 import com.kodingwithkyle.workouttracker.ui.add.AddWorkoutFragment
+import com.kodingwithkyle.workouttracker.ui.viewworkout.ViewWorkoutFragment
 
 class MainFragment : Fragment() {
 
@@ -22,8 +23,10 @@ class MainFragment : Fragment() {
         const val TAG = "MAIN_FRAGMENT"
     }
 
+    private val workoutAdapter = WorkoutAdapter()
+
     private val homeViewModel: MainViewModel by viewModels {
-        MainVMFactory(WorkoutRepo(AppDatabase.getInstance(requireContext()).workoutDao()))
+        MainVMFactory(WorkoutRepo.getInstance(AppDatabase.getInstance(requireContext()).workoutDao()))
     }
 
     override fun onCreateView(
@@ -35,10 +38,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val workoutAdapter = WorkoutAdapter()
+
         view.findViewById<RecyclerView>(R.id.workouts).adapter = workoutAdapter
         subscribeUI(workoutAdapter)
-        view.findViewById<FloatingActionButton>(R.id.add_workout_btn).setOnClickListener{
+        view.findViewById<FloatingActionButton>(R.id.add_workout_btn).setOnClickListener {
             onAddWorkoutClick(it)
         }
     }
@@ -54,6 +57,16 @@ class MainFragment : Fragment() {
             beginTransaction()
                 .add(R.id.container, AddWorkoutFragment.newInstance(), AddWorkoutFragment.TAG)
                 .addToBackStack(AddWorkoutFragment.TAG)
+                .commit()
+        }
+    }
+
+    fun onListItemClick(position: Int) {
+        val workout = workoutAdapter.getWorkout(position)
+        requireActivity().supportFragmentManager.apply {
+            beginTransaction()
+                .add(R.id.container, ViewWorkoutFragment.newInstance(workout.id), ViewWorkoutFragment.TAG)
+                .addToBackStack(ViewWorkoutFragment.TAG)
                 .commit()
         }
     }
