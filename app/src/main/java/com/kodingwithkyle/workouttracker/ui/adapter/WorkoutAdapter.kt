@@ -15,6 +15,7 @@ class WorkoutAdapter() : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>(
     private val workouts = ArrayList<Workout>()
 
     fun setWorkouts(workouts: List<Workout>) {
+        this.workouts.clear()
         this.workouts.addAll(workouts)
         notifyDataSetChanged()
     }

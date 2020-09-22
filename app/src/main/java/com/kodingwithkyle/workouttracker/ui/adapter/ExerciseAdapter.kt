@@ -1,5 +1,7 @@
 package com.kodingwithkyle.workouttracker.ui.adapter
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +20,25 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_item_exercise, parent, false)
         val holder = ViewHolder(view)
+        view.findViewById<EditText>(R.id.exercise_name)
+            .addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    mExercises[holder.adapterPosition].name = s.toString()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+            })
         view.findViewById<ImageButton>(R.id.delete).setOnClickListener {
             mExercises.removeAt(holder.adapterPosition)
             notifyItemChanged(holder.adapterPosition)
@@ -25,8 +46,7 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
         view.findViewById<ImageButton>(R.id.save_btn).setOnClickListener {
             mExercises[holder.adapterPosition].name =
                 view.findViewById<EditText>(R.id.exercise_name).text.toString()
-            view.clearFocus()
-            mExercises.add(Exercise("",10,3,30.0))
+            mExercises.add(Exercise("", 10, 3, 30.0))
             notifyItemChanged(holder.adapterPosition)
         }
         view.findViewById<ImageButton>(R.id.subtract_sets).setOnClickListener {
@@ -47,6 +67,7 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
         }
         view.findViewById<ImageButton>(R.id.add_reps).setOnClickListener {
             mExercises[holder.adapterPosition].reps++
+            holder.itemView.invalidate()
             notifyItemChanged(holder.adapterPosition)
         }
         view.findViewById<ImageButton>(R.id.minus_weight).setOnClickListener {

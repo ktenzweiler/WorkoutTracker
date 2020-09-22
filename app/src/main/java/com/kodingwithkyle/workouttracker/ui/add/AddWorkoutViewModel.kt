@@ -1,6 +1,7 @@
 package com.kodingwithkyle.workouttracker.ui.add
 
 import android.text.format.DateFormat
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,12 +28,14 @@ class AddWorkoutViewModel internal constructor(
             }
         }
         viewModelScope.launch(Dispatchers.IO) {
+            val exercisesString = Gson().toJson(tempList)
+            Log.d("Exercises", exercisesString)
             workoutRepo.insertWorkout(
                 Workout(
                     id = 0,
                     date.toString(),
                     muscleGroup,
-                    Gson().toJson(tempList)
+                    exercisesString
                 )
             )
         }

@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.kodingwithkyle.workouttracker.MainActivity
 import com.kodingwithkyle.workouttracker.R
 import com.kodingwithkyle.workouttracker.data.AppDatabase
 import com.kodingwithkyle.workouttracker.data.model.exercise.Exercise
@@ -38,7 +39,7 @@ class AddWorkoutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val arrayList = ArrayList<Exercise>()
-        arrayList.add(Exercise("", 10,3,30.0))
+        arrayList.add(Exercise("", 10, 3, 30.0))
         mAdapter.setExercises(arrayList)
         return inflater.inflate(R.layout.add_workout_fragment, container, false)
     }
@@ -51,14 +52,7 @@ class AddWorkoutFragment : Fragment() {
                 view.findViewById<EditText>(R.id.muscle_group).text.toString(),
                 mAdapter.getExercises()
             )
-            requireActivity().supportFragmentManager.apply {
-                beginTransaction().replace(
-                    R.id.container,
-                    MainFragment.newInstance(),
-                    MainFragment.TAG
-                )
-                    .commit()
-            }
+            (requireActivity() as MainActivity).showMainFragment()
         }
     }
 }

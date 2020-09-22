@@ -15,12 +15,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, mMainFragment)
-                    .commitNow()
+                .replace(R.id.container, mMainFragment)
+                .commitNow()
         }
     }
 
     fun onListItemClick(i: Int) {
         mMainFragment.onListItemClick(i)
+    }
+
+    fun showMainFragment() {
+        supportFragmentManager.apply {
+            beginTransaction().replace(R.id.container, mMainFragment).commit()
+        }
     }
 }
