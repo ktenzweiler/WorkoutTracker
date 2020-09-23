@@ -7,7 +7,7 @@ class WorkoutRepo internal constructor(private val workoutDao: WorkoutDao) {
 
     fun fetchWorkouts() = workoutDao.fetchWorkouts()
 
-    fun fetchWorkout(workoutId: String) = workoutDao.fetchWorkoutById(workoutId)
+    fun fetchWorkout(workoutId: Int) = workoutDao.fetchWorkoutById(workoutId)
 
     suspend fun insertWorkout(workout: Workout) {
         withContext(Dispatchers.IO) {

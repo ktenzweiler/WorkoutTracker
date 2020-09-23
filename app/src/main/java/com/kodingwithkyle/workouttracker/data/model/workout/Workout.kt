@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "workouts")
 data class Workout(
-    @PrimaryKey @ColumnInfo(name = "date") val date: String,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int,
+    val date: String,
     val muscle: String,
     val exercises: String
 ) {
@@ -15,7 +16,7 @@ data class Workout(
         if (javaClass != other?.javaClass) return false
 
         other as Workout
-
+        if (id != other.id) return false
         if (date != other.date) return false
         if (muscle != other.muscle) return false
         if (exercises != other.exercises) return false
@@ -25,6 +26,7 @@ data class Workout(
 
     override fun hashCode(): Int {
         var result = date.hashCode()
+        result = 31 * result + id.hashCode()
         result = 31 * result + muscle.hashCode()
         result = 31 * result + exercises.hashCode()
         return result

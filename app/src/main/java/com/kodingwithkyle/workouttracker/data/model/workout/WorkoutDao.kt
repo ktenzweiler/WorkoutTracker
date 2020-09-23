@@ -8,11 +8,11 @@ import androidx.room.Query
 
 @Dao
 interface WorkoutDao {
-@Query("SELECT * FROM workouts ORDER BY date")
+    @Query("SELECT * FROM workouts ORDER BY date")
     fun fetchWorkouts(): LiveData<List<Workout>>
 
-    @Query("SELECT * FROM workouts WHERE date = :workoutId")
-    fun fetchWorkoutById(workoutId: String) : LiveData<Workout>
+    @Query("SELECT * FROM workouts WHERE id = :workoutId")
+    fun fetchWorkoutById(workoutId: Int): LiveData<Workout>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWorkout(workout: Workout)

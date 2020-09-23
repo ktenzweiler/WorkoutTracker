@@ -5,14 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kodingwithkyle.workouttracker.MainActivity
 import com.kodingwithkyle.workouttracker.R
 import com.kodingwithkyle.workouttracker.data.model.workout.Workout
+import com.kodingwithkyle.workouttracker.ui.main.MainFragment
 
-class WorkoutAdapter() : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
+class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
     private val workouts = ArrayList<Workout>()
 
-    fun setWorkouts(workouts : List<Workout>) {
+    fun setWorkouts(workouts: List<Workout>) {
+        this.workouts.clear()
         this.workouts.addAll(workouts)
         notifyDataSetChanged()
     }
@@ -29,10 +32,19 @@ class WorkoutAdapter() : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>(
 
     override fun getItemCount() = workouts.size
 
-    class WorkoutViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    fun getWorkout(position: Int) = workouts[position]
+
+    class WorkoutViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         fun bind(workout: Workout) {
+            itemView.setOnClickListener(this)
             itemView.findViewById<TextView>(R.id.title).text = workout.date
             itemView.findViewById<TextView>(R.id.date).text = workout.muscle
+        }
+
+        override fun onClick(v: View?) {
+            v?.let {
+                (it.context as MainActivity).onListItemClick(adapterPosition)
+            }
         }
     }
 }
