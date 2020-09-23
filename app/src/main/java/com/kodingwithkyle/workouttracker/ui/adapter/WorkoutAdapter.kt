@@ -10,7 +10,7 @@ import com.kodingwithkyle.workouttracker.R
 import com.kodingwithkyle.workouttracker.data.model.workout.Workout
 import com.kodingwithkyle.workouttracker.ui.main.MainFragment
 
-class WorkoutAdapter() : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
+class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
     private val workouts = ArrayList<Workout>()
 

@@ -3,8 +3,10 @@ package com.kodingwithkyle.workouttracker.ui.viewworkout
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.observe
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -52,6 +54,8 @@ class ViewWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.exercises.observe(viewLifecycleOwner) {
+            view.findViewById<TextView>(R.id.muscle_group).text = it.muscle
+            view.findViewById<TextView>(R.id.date).text = it.date
             val exerciseType = object : TypeToken<ArrayList<Exercise>>() {}.type
             val exercises = Gson().fromJson<ArrayList<Exercise>>(it.exercises, exerciseType)
             mAdapter.setExercise(exercises)

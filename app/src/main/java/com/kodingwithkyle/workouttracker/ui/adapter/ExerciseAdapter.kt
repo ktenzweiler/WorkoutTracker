@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kodingwithkyle.workouttracker.R
 import com.kodingwithkyle.workouttracker.data.model.exercise.Exercise
 
-class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
+class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
 
     private val mExercises = ArrayList<Exercise>()
 
