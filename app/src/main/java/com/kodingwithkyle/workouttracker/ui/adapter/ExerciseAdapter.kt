@@ -47,38 +47,49 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
             mExercises[holder.adapterPosition].name =
                 view.findViewById<EditText>(R.id.exercise_name).text.toString()
             mExercises.add(Exercise("", 10, 3, 30.0))
-            notifyItemChanged(holder.adapterPosition)
+            notifyItemChanged(holder.adapterPosition + 1)
         }
         view.findViewById<ImageButton>(R.id.subtract_sets).setOnClickListener {
             if (mExercises[holder.adapterPosition].sets > 0) {
                 mExercises[holder.adapterPosition].sets--
-                notifyItemChanged(holder.adapterPosition)
+                val subtractTV = view.findViewById<TextView>(R.id.sets_count)
+                subtractTV.text = mExercises[holder.adapterPosition].sets.toString()
+                subtractTV.invalidate()
             }
         }
         view.findViewById<ImageButton>(R.id.add_sets).setOnClickListener {
             mExercises[holder.adapterPosition].sets++
-            notifyItemChanged(holder.adapterPosition)
+            val subtractTV = view.findViewById<TextView>(R.id.sets_count)
+            subtractTV.text = mExercises[holder.adapterPosition].sets.toString()
+            subtractTV.invalidate()
         }
         view.findViewById<ImageButton>(R.id.subtract_reps).setOnClickListener {
             if (mExercises[holder.adapterPosition].reps > 0) {
                 mExercises[holder.adapterPosition].reps--
-                notifyItemChanged(holder.adapterPosition)
+                val repsTV = view.findViewById<TextView>(R.id.reps_count)
+                repsTV.text = mExercises[holder.adapterPosition].reps.toString()
+                repsTV.invalidate()
             }
         }
         view.findViewById<ImageButton>(R.id.add_reps).setOnClickListener {
             mExercises[holder.adapterPosition].reps++
-            holder.itemView.invalidate()
-            notifyItemChanged(holder.adapterPosition)
+            val repsTV = view.findViewById<TextView>(R.id.reps_count)
+            repsTV.text = mExercises[holder.adapterPosition].reps.toString()
+            repsTV.invalidate()
         }
         view.findViewById<ImageButton>(R.id.minus_weight).setOnClickListener {
             if (mExercises[holder.adapterPosition].weight > 0) {
                 mExercises[holder.adapterPosition].weight -= 2.5
-                notifyItemChanged(holder.adapterPosition)
+                val weightTV = holder.itemView.findViewById<TextView>(R.id.weight)
+                weightTV.text = mExercises[holder.adapterPosition].weight.toString()
+                weightTV.invalidate()
             }
         }
         view.findViewById<ImageButton>(R.id.add_weight).setOnClickListener {
             mExercises[holder.adapterPosition].weight += 2.5
-            notifyItemChanged(holder.adapterPosition)
+            val weightTV = holder.itemView.findViewById<TextView>(R.id.weight)
+            weightTV.text = mExercises[holder.adapterPosition].weight.toString()
+            weightTV.invalidate()
         }
         return holder
     }
