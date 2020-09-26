@@ -20,7 +20,7 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_item_exercise, parent, false)
         val holder = ViewHolder(view)
-        view.findViewById<EditText>(R.id.exercise_name)
+        view.findViewById<EditText>(R.id.exercise_name_et)
             .addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -115,7 +115,7 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(exercise: Exercise) {
-            itemView.findViewById<TextView>(R.id.exercise_name).text = exercise.name
+            itemView.findViewById<TextView>(R.id.exercise_name_et).text = exercise.name
             itemView.findViewById<TextView>(R.id.sets_count).text = exercise.sets.toString()
             itemView.findViewById<TextView>(R.id.reps_count).text = exercise.reps.toString()
             itemView.findViewById<TextView>(R.id.weight).text = exercise.weight.toString()

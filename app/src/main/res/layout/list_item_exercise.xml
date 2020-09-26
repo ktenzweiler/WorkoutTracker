@@ -7,24 +7,31 @@
     android:layout_margin="8dp"
     android:background="@color/colorAccent">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/exercise_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:hint="Exercise"
-        android:inputType="textPersonName"
         android:textColor="#FFFFFF"
+        android:layout_marginStart="8dp"
+        android:hint="Exercise"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.054">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/exercise_name_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/exercise_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +60,8 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="0" />
+            android:text="0"
+            android:textColor="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/add_sets"
@@ -67,15 +75,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="178dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/exercise_name"
-        app:layout_constraintTop_toBottomOf="@+id/exercise_name"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -100,7 +106,8 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="0" />
+            android:text="0"
+            android:textColor="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/add_reps"
@@ -126,14 +133,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="178dp"
-        android:layout_height="42dp"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
@@ -159,7 +165,8 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="0" />
+            android:text="0"
+            android:textColor="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/add_weight"
