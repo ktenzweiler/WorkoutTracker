@@ -49,7 +49,7 @@ class AddWorkoutFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.exercise_list).adapter = mAdapter
         view.findViewById<FloatingActionButton>(R.id.save_fab).setOnClickListener {
             addWorkoutViewModel.saveWorkout(
-                view.findViewById<EditText>(R.id.muscle_group).text.toString(),
+                view.findViewById<EditText>(R.id.muscle_group_et).text.toString(),
                 mAdapter.getExercises()
             )
             (requireActivity() as MainActivity).showMainFragment()
