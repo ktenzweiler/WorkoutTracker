@@ -45,7 +45,7 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
         }
         view.findViewById<ImageButton>(R.id.save_btn).setOnClickListener {
             mExercises[holder.adapterPosition].name =
-                view.findViewById<EditText>(R.id.exercise_name).text.toString()
+                view.findViewById<EditText>(R.id.exercise_name_et).text.toString()
             mExercises.add(Exercise("", 10, 3, 30.0))
             notifyItemChanged(holder.adapterPosition + 1)
         }
