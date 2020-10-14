@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kodingwithkyle.workouttracker.MainActivity
 import com.kodingwithkyle.workouttracker.R
 import com.kodingwithkyle.workouttracker.data.model.workout.Workout
-import com.kodingwithkyle.workouttracker.ui.main.MainFragment
 
 class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
@@ -16,7 +15,7 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() 
 
     fun setWorkouts(workouts: List<Workout>) {
         this.workouts.clear()
-        this.workouts.addAll(workouts)
+        this.workouts.addAll(workouts.reversed())
         notifyDataSetChanged()
     }
 
