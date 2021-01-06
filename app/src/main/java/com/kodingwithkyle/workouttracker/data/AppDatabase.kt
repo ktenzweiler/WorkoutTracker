@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.kodingwithkyle.workouttracker.data.model.workout.WorkoutDao
 import com.kodingwithkyle.workouttracker.data.model.workout.Workout
 
-@Database(entities = [Workout::class], version = 1, exportSchema = false)
+@Database(entities = [Workout::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun workoutDao(): WorkoutDao

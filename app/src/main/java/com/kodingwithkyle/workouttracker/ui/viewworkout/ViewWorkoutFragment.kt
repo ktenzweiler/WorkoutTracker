@@ -17,6 +17,9 @@ import com.kodingwithkyle.workouttracker.data.AppDatabase
 import com.kodingwithkyle.workouttracker.data.model.exercise.Exercise
 import com.kodingwithkyle.workouttracker.data.model.workout.WorkoutRepo
 import com.kodingwithkyle.workouttracker.ui.adapter.ExerciseDetailsAdapter
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ViewWorkoutFragment : Fragment() {
 
@@ -53,9 +56,11 @@ class ViewWorkoutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val dateFormat = SimpleDateFormat("MMMM dd yyyy", Locale.getDefault())
+        val date = Date()
         viewModel.exercises.observe(viewLifecycleOwner) {
             view.findViewById<TextView>(R.id.muscle_group).text = it.muscle
-            view.findViewById<TextView>(R.id.date).text = it.date
+            view.findViewById<TextView>(R.id.date).text = dateFormat.format(date)
             val exerciseType = object : TypeToken<ArrayList<Exercise>>() {}.type
             val exercises = Gson().fromJson<ArrayList<Exercise>>(it.exercises, exerciseType)
             mAdapter.setExercise(exercises)

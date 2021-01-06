@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kodingwithkyle.workouttracker.MainActivity
 import com.kodingwithkyle.workouttracker.R
 import com.kodingwithkyle.workouttracker.data.model.workout.Workout
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
@@ -33,10 +37,16 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() 
 
     fun getWorkout(position: Int) = workouts[position]
 
-    class WorkoutViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class WorkoutViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+
+        private val dateFormat = SimpleDateFormat("MMMM dd yyyy", Locale.getDefault())
+        private val date = Date()
+
         fun bind(workout: Workout) {
             itemView.setOnClickListener(this)
-            itemView.findViewById<TextView>(R.id.title).text = workout.date
+            date.time = workout.date
+            itemView.findViewById<TextView>(R.id.title).text = dateFormat.format(date)
             itemView.findViewById<TextView>(R.id.date).text = workout.muscle
         }
 

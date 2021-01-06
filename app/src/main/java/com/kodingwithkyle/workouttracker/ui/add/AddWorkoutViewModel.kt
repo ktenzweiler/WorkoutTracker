@@ -20,7 +20,8 @@ class AddWorkoutViewModel internal constructor(
 ) : ViewModel() {
 
     fun saveWorkout(muscleGroup: String, exercises: ArrayList<Exercise>) {
-        val date = DateFormat.format("MM-dd-yyyy", Date())
+        val cal = Calendar.getInstance()
+        val date = cal.timeInMillis
         val tempList = ArrayList<Exercise>()
         for (e in exercises) {
             if (e.name.isNotEmpty()) {
@@ -33,7 +34,7 @@ class AddWorkoutViewModel internal constructor(
             workoutRepo.insertWorkout(
                 Workout(
                     id = 0,
-                    date.toString(),
+                    date,
                     muscleGroup,
                     exercisesString
                 )
